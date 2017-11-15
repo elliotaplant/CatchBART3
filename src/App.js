@@ -2,6 +2,34 @@ import React, {Component} from 'react';
 import './App.css';
 import AppHeader from './AppHeader';
 
+// Base class for the app - holds state for entire app
+/*
+Location: {
+  x: number,
+  y: number
+}
+
+Station: {
+  name: string,
+  abbr: string
+  coords?: {
+    x: number,
+    y: number
+  },
+}
+
+Estimate: {
+  ???
+}
+state = {
+  userLocation: Location,
+  closestStation: Station,
+  estimates: {
+    northbound: Estimate[],
+    southbound: Estimate[],
+  }
+}
+*/
 class App extends Component {
   constructor(props) {
     super(props);
@@ -10,9 +38,21 @@ class App extends Component {
     };
   }
 
+  calculateLoadingState() {
+    if (this.state.userLocation) {
+      if (this.state.closestStation) {
+        if (this.state.estimates) {
+          return 'loaded'
+        }
+        return 'finding closest station';
+      }
+    }
+    return 'getting user location';
+  }
+
   render() {
     return (<div className="App">
-      <AppHeader></AppHeader>
+      <AppHeader loadingState={this.calculateLoadingState()}></AppHeader>
       <ul id="destinations-list"></ul>
       {this.state.estimates}
     </div>);
