@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Utils, {Types} from '../utils';
+import {Types} from '../utils';
 import './AppHeader.css';
 
 class AppHeader extends Component {

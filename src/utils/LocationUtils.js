@@ -4,11 +4,9 @@ import MathUtils from './MathUtils';
 export class LocationUtils {
   static getUsersCurrentLocation() {
     return new Promise((resolve, reject) => {
-      console.log('star');
       navigator
         .geolocation
         .getCurrentPosition(position => {
-          console.log('fish', position);
           resolve([position.coords.latitude, position.coords.longitude,]);
         });
     });
@@ -18,8 +16,8 @@ export class LocationUtils {
     let absoluteDistance = Infinity;
     let closestStation = null;
     for (let station in stationCoords) {
-      console.log('station',station);
       const stationDist = MathUtils.getDistBetween(userLocation, stationCoords[station]);
+      console.log('closestStation',closestStation,stationDist, absoluteDistance);
       if (stationDist < absoluteDistance) {
         absoluteDistance = stationDist;
         closestStation = station;
