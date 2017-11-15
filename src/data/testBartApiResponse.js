@@ -95,4 +95,4 @@ const testBartApiResponse = {
       "message":""
    }
 };
-export default testResponse;
+export default testBartApiResponse;

@@ -1,3 +1,5 @@
 import MathUtils from './MathUtils';
 import LocationUtils from './LocationUtils';
-export default {MathUtils, LocationUtils};
+import Types from './Types';
+
+export default {MathUtils, LocationUtils, Types};
