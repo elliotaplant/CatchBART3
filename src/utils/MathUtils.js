@@ -5,7 +5,6 @@ class MathUtils {
     const phi2 = MathUtils.toRadians(coord2[0]);
     const deltaPhi = MathUtils.toRadians(coord2[0] - coord1[0]);
     const deltaLambda = MathUtils.toRadians(coord2[1] - coord1[1]);
-    console.log('phi1 phi2 deltaPhi deltaLambda',phi1, phi2, deltaPhi, deltaLambda);
     const a = Math.sin(deltaPhi / 2) * Math.sin(deltaPhi / 2) + Math.cos(phi1) * Math.cos(phi2) * Math.sin(deltaLambda / 2) * Math.sin(deltaLambda / 2);
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 

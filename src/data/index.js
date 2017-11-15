@@ -1,6 +1,6 @@
-import stationCoords from './stationCoords';
+import stations from './stations';
 import testBartApiResponse from './testBartApiResponse';
 export {
-  stationCoords,
+  stations,
   testBartApiResponse,
 };

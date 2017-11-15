@@ -1,4 +1,4 @@
-import {stationCoords} from '../data';
+import {stations} from '../data';
 import MathUtils from './MathUtils';
 
 export class LocationUtils {
@@ -15,18 +15,15 @@ export class LocationUtils {
   static findClosestStation(userLocation) {
     let absoluteDistance = Infinity;
     let closestStation = null;
-    for (let station in stationCoords) {
-      const stationDist = MathUtils.getDistBetween(userLocation, stationCoords[station]);
-      console.log('closestStation',closestStation,stationDist, absoluteDistance);
+    for (let station in stations) {
+      const stationDist = MathUtils.getDistBetween(userLocation, stations[station].location);
       if (stationDist < absoluteDistance) {
         absoluteDistance = stationDist;
-        closestStation = station;
+        closestStation = stations[station];
       }
     }
     return {
-      abbr: closestStation,
-      longName: closestStation,
-      location: stationCoords[closestStation],
+      ...closestStation,
       distance: absoluteDistance
     };
   }
