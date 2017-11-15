@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import AppHeader from './AppHeader';
-import Types from './utils/Types';
+import Utils, {Types} from './utils';
 import LocationUtils from './utils/LocationUtils'
 import DestinationsList from './DestinationsList';
 
