@@ -1,2 +1,3 @@
 import MathUtils from './MathUtils';
-export default {MathUtils};
+import LocationUtils from './LocationUtils';
+export default {MathUtils, LocationUtils};
