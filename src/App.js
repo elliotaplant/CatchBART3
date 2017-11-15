@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import AppHeader from './AppHeader';
+import DestinationsList from './DestinationsList';
 
 // Base class for the app - holds state for entire app
 /*
@@ -53,8 +54,7 @@ class App extends Component {
   render() {
     return (<div className="App">
       <AppHeader loadingState={this.calculateLoadingState()}></AppHeader>
-      <ul id="destinations-list"></ul>
-      {this.state.estimates}
+      <DestinationsList></DestinationsList>
     </div>);
   }
 }

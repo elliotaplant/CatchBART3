@@ -1,0 +1,9 @@
+.page-header {
+  padding: 2vh;
+  border-bottom: 2px solid black;
+  text-align: center;
+}
+
+#main-title {
+  font-size: 10vw;
+}
