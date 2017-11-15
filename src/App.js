@@ -39,14 +39,9 @@ class App extends Component {
     this.state = {
       estimates: 'aggresstimates'
     };
-    LocationUtils.getUsersCurrentLocation(location => {
-      this.setState({
-        userLocation: {
-          x: 1,
-          y: 10
-        }
-      })
-    });
+    LocationUtils
+      .getUsersCurrentLocation()
+      .then(location => this.setState({userLocation: location}))
   }
 
   calculateLoadingState() {
