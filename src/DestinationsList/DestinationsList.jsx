@@ -27,11 +27,13 @@ export default class DestinationsList extends Component {
     const destinationElements = (this.props.destinations || []).map(destination => {
       return <li className="destination-entry-item">
         <div className="destination-long-name">{destination.destination}</div>
-        {
-          destination
-            .estimate
-            .map(estimate => this.createTrainEstimate(estimate))
-        }
+        <div className="estimates-list">
+          {
+            destination
+              .estimate
+              .map(estimate => this.createTrainEstimate(estimate))
+          }
+        </div>
       </li>;
     });
     return <ul>{destinationElements}</ul>;
