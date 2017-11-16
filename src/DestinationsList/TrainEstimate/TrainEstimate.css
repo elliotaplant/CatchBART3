@@ -11,3 +11,13 @@
   border-radius: 50%;
   font-size: 5vw;
 }
+
+.will-be-late {
+  background-color: rgba(239, 14, 14, 0.5);
+}
+.might-make-it {
+  background-color: rgba(239, 235, 9, 0.5);
+}
+.might-make-it {
+  background-color: rgba(14, 239, 66, 0.5);
+}
