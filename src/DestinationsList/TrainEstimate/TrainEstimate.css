@@ -1,23 +1,36 @@
 .train-estimate {
   margin-left: 1em;
   /* List item height */
+  height: 7vw;
+  /* Makes destination outline a circle - must be same as list item height */
+  width: 7vw;
+  text-align: center;
+  /* Vertically centers text in item - must be same as list item height */
+  line-height: 7vw;
+  border: 1px solid black;
+  border-radius: 50%;
+  font-size: 4vw;
+}
+
+.train-estimate:first-child {
+  margin-left: 0;
+  /* List item height */
   height: 10vw;
   /* Makes destination outline a circle - must be same as list item height */
   width: 10vw;
   text-align: center;
   /* Vertically centers text in item - must be same as list item height */
   line-height: 10vw;
-  border: 1px solid black;
   border-radius: 50%;
   font-size: 5vw;
 }
 
-.will-be-late {
+.urgency-danger {
   background-color: rgba(239, 14, 14, 0.5);
 }
-.might-make-it {
+.urgency-warning {
   background-color: rgba(239, 235, 9, 0.5);
 }
-.might-make-it {
+.urgency-safe {
   background-color: rgba(14, 239, 66, 0.5);
 }
