@@ -50,7 +50,7 @@ class App extends Component {
   calculateLoadingState() {
     if (this.state.userLocation) {
       if (this.state.closestStation) {
-        if (this.state.estimates) {
+        if (this.state.destinations) {
           return Types.LoadingState.LOADED;
         }
         return Types.LoadingState.LOADING_TIME_ESTIMATES;

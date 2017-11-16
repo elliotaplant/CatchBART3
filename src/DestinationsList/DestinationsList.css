@@ -8,3 +8,9 @@
 .estimates-list {
   display: flex;
 }
+
+.destination-long-name {
+  /* Vertically centers text in item - must be same as list item height */
+  line-height: 10vw;
+  font-size: 5vw;
+}
