@@ -19,7 +19,7 @@ export default class BartUtils {
     };
   }
 
-  static getStationEstimates(abbr) {
+  static getStationDestionationEstimates(abbr) {
     const bartApiUrl = BartUtils.createUrlForStation(abbr);
     return ClientUtils.createGetRequest(bartApiUrl).send()
       .then(bartApiResponse => bartApiResponse.root.station[0].etd);

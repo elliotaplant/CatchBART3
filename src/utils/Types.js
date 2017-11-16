@@ -6,9 +6,16 @@ const Types = {
     LOADED: 'loaded',
   },
 
-  Direction: {
-    NORTHBOUND: 'n',
-    SOUTHBOUND: 's'
+  TransportationMode: {
+    WALKING: 'walking',
+    RUNNING: 'running',
+    DRIVING: 'driving'
+  },
+
+  Urgency: {
+    DANGER: 'danger',
+    WARNING: 'warning',
+    SAFE: 'safe'
   }
 }
 

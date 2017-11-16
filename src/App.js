@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import AppHeader from './AppHeader';
-import {BartUtils, LocationUtils, Types} from './utils';
+import {BartUtils, LocationUtils, ObjectUtils, Types} from './utils';
 import DestinationsList from './DestinationsList';
 
 // Base class for the app - holds state for entire app
@@ -30,7 +30,9 @@ state = {
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      transportationMode: Types.TransportationMode.WALKING
+    };
 
     this.init();
   }
@@ -41,12 +43,8 @@ class App extends Component {
       .then(location => this.setState({userLocation: location}))
       .then(() => BartUtils.findClosestStation(this.state.userLocation))
       .then(closestStation => this.setState({closestStation}))
-      .then(() => this.getStationEstimates(this.state.closestStation.abbr))
-      .then(estimates => this.setState({estimates}))
-  }
-
-  getStationEstimates(abbr) {
-    return BartUtils.getStationEstimates(abbr);
+      .then(() => BartUtils.getStationDestionationEstimates(this.state.closestStation.abbr))
+      .then(destinations => this.setState({destinations}))
   }
 
   calculateLoadingState() {
@@ -63,11 +61,15 @@ class App extends Component {
   }
 
   render() {
-    return (<div className="App">
-      <AppHeader loadingState={this.calculateLoadingState()}
-        closestStation={this.state.closestStation}></AppHeader>
-      <DestinationsList estimates={this.state.estimates}></DestinationsList>
-    </div>);
+    return (
+      <div className="App">
+        <AppHeader loadingState={this.calculateLoadingState()} closestStation={this.state.closestStation}></AppHeader>
+        <DestinationsList
+          destinations={this.state.destinations}
+          stationDistance={ObjectUtils.safeGet(() => this.state.closestStation.distance)}
+          transportationMode={this.state.transportationMode}></DestinationsList>
+      </div>
+    );
   }
 }
 export default App;

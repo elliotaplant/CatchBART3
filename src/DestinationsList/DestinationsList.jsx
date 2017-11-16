@@ -1,15 +1,39 @@
-import React from 'react';
+import React, {Component} from 'react';
+import TrainEstimate from './TrainEstimate';
 import './DestinationsList.css';
 
 /*
-props = Estimate[]
-*/
-function DestinationsList(props) {
-  const estimateElements = (props.estimates || []).map(estimate => {
-    console.log('estimate',estimate);
-    return <li>{estimate.destination} {estimate.estimate.map(e => <span>{e.minutes} </span>)}</li>;
-  })
 
-  return <ul>{estimateElements}</ul>;
+Destination = {
+  destination: string, // longName
+  estimate: Estimate[]
 }
-export default DestinationsList;
+
+props = {
+  destinations: Destination[],
+  stationDistance: number, // miles
+}
+*/
+export default class DestinationsList extends Component {
+
+  createTrainEstimate(trainEstimate) {
+    return <TrainEstimate
+      estimate={trainEstimate}
+      stationDistance={this.props.stationDistance}
+      transportationMode={this.props.transportationMode}></TrainEstimate>;
+  }
+
+  render() {
+    const destinationElements = (this.props.destinations || []).map(destination => {
+      return <li>
+        <div className="destination-long-name"></div>{destination.destination}
+        {
+          destination
+            .estimate
+            .map(estimate => this.createTrainEstimate(estimate))
+        }
+      </li>;
+    });
+    return <ul>{destinationElements}</ul>;
+  }
+}
