@@ -4,7 +4,7 @@
 }
 
 .destination-entry-info {
-  padding: 1em;
+  padding: 0.8em;
   flex-grow: 1;
   display: flex;
   justify-content: space-between;
@@ -12,6 +12,7 @@
 
 .estimates-list {
   display: flex;
+  align-items: center;
   width: 40vw;
 }
 
