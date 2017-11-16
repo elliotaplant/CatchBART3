@@ -25,7 +25,7 @@ export default class DestinationsList extends Component {
 
   render() {
     const destinationElements = (this.props.destinations || []).map(destination => {
-      return <li>
+      return <li className="station-container">
         <div className="destination-long-name"></div>{destination.destination}
         {
           destination

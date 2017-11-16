@@ -12,9 +12,9 @@ export default class LocationUtils {
   }
 
   static speedForTransportationMode(transportationMode) {
-    if (transportationMode = Types.TransportationMode.DRIVING) {
+    if (transportationMode === Types.TransportationMode.DRIVING) {
       return 25; // mph
-    } else if (transportationMode = Types.TransportationMode.RUNNING) {
+    } else if (transportationMode === Types.TransportationMode.RUNNING) {
       return 5; // mph
     }
     return 3; // walking mph
@@ -22,9 +22,8 @@ export default class LocationUtils {
 
   static calculateUrgency(arrivalMinutes, stationDistance, transportationMode) {
     try {
-      const travelTime = stationDistance / LocationUtils.speedForTransportationMode(transportationMode) / 60; // min
+      const travelTime = stationDistance / (LocationUtils.speedForTransportationMode(transportationMode) / 60); // min
       const timeQuotient = arrivalMinutes / travelTime;
-
       if (timeQuotient < 1) {
         return Types.Urgency.DANGER;
       } else if (timeQuotient < 1.2) {

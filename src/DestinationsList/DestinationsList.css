@@ -1,9 +1,6 @@
-.page-header {
-  padding: 2vh;
-  border-bottom: 2px solid black;
-  text-align: center;
-}
-
-#main-title {
-  font-size: 10vw;
+.train-container {
+  border-bottom: 2px solid rgba(50, 50, 100, 0.3);
+  padding: 1em;
+  display: flex;
+  justify-content: space-between;
 }
