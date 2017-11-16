@@ -1,14 +1,21 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './DestinationsList.css';
 
 /*
 props = Estimate[]
 */
 function DestinationsList(props) {
-  return (<ul>
-    <li>Sup1</li>
-    <li>Sup2</li>
-    <li>Sup3</li>
-  </ul>)
+  // Assume we don't have any estimates
+  let concattedEstimates = [];
+  // Attempt to get the estimates from the props
+  try {
+    concattedEstimates = [...props.estimates.northbound, ...props.estimates.southbound];
+  } catch (e) { }
+
+  const estimateElements = concattedEstimates.map(estimate => {
+    return <li>Estimate! {estimate.time}</li>;
+  })
+
+  return <ul>{estimateElements}</ul>;
 }
 export default DestinationsList;

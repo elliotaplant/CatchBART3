@@ -1,4 +1,4 @@
-class MathUtils {
+export default class MathUtils {
   static getDistBetween(coord1, coord2) {
     const R = 3959; // miles
     const phi1 = MathUtils.toRadians(coord1[0]);
@@ -23,4 +23,3 @@ class MathUtils {
     return rounded
   }
 }
-export default MathUtils;
