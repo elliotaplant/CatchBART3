@@ -14,5 +14,13 @@ class MathUtils {
   static toRadians(num) {
     return num * Math.PI / 180;
   }
+
+  static roundNumberTo1DecimalPlace(distance) {
+    let rounded = (Math.round(distance * 10) / 10).toString();
+    if (!rounded.includes('.')) {
+      rounded += '.0';
+    }
+    return rounded
+  }
 }
 export default MathUtils;

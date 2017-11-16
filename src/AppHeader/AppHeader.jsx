@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Types} from '../utils';
+import {MathUtils, Types} from '../utils';
 import './AppHeader.css';
 
 class AppHeader extends Component {
@@ -15,9 +15,19 @@ class AppHeader extends Component {
     }
   }
 
+  distanceToClosestStation() {
+    if (this.props.loadingState === Types.LoadingState.LOADED) {
+      return (<h2 id="disance-to-closest-station">
+        {MathUtils.roundNumberTo1DecimalPlace(this.props.closestStation.distance)} miles
+      </h2>)
+    }
+    return null;
+  }
+
   render() {
     return (<header className="page-header">
       <h1 id="main-title">{this.headerTextFromLoadingState()}</h1>
+      {this.distanceToClosestStation()}
     </header>);
   }
 }
