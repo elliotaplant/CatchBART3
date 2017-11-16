@@ -1,9 +1,10 @@
 export default class ClientUtils {
-  createGetRequest(url) {
+
+  static createGetRequest(url) {
     return ClientUtils.createCORSRequest('GET', url);
   }
 
-  createCORSRequest(method, url) {
+  static createCORSRequest(method, url) {
     let xhr = new XMLHttpRequest();
     xhr.open(method, url, true);
 

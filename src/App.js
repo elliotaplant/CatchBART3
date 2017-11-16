@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import AppHeader from './AppHeader';
-import {BartUtils, ClientUtils, LocationUtils, Types} from './utils';
+import {BartUtils, LocationUtils, Types} from './utils';
 import DestinationsList from './DestinationsList';
 
 // Base class for the app - holds state for entire app
@@ -30,9 +30,7 @@ state = {
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      estimates: 'aggresstimates'
-    };
+    this.state = {};
 
     this.init();
   }
@@ -42,12 +40,13 @@ class App extends Component {
       .getUsersCurrentLocation()
       .then(location => this.setState({userLocation: location}))
       .then(() => BartUtils.findClosestStation(this.state.userLocation))
-      .then((closestStation) => this.setState({closestStation}))
+      .then(closestStation => this.setState({closestStation}))
       .then(() => this.getStationEstimates(this.state.closestStation.abbr))
+      .then(estimates => this.setState({estimates}))
   }
 
   getStationEstimates(abbr) {
-    ClientUtils.createGetRequest()
+    return BartUtils.getStationEstimates(abbr);
   }
 
   calculateLoadingState() {
@@ -67,8 +66,6 @@ class App extends Component {
     return (<div className="App">
       <AppHeader loadingState={this.calculateLoadingState()}
         closestStation={this.state.closestStation}></AppHeader>
-      {JSON.stringify(this.state.userLocation)}
-      {JSON.stringify(this.state.closestStation)}
       <DestinationsList estimates={this.state.estimates}></DestinationsList>
     </div>);
   }

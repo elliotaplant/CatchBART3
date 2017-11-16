@@ -4,6 +4,11 @@ const Types = {
     FINDING_CLOSEST_STATION: 'finding closest station',
     LOADING_TIME_ESTIMATES: 'loading time estimates',
     LOADED: 'loaded',
+  },
+
+  Direction: {
+    NORTHBOUND: 'n',
+    SOUTHBOUND: 's'
   }
 }
 
