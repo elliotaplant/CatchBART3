@@ -16,11 +16,12 @@ props = {
 */
 export default class DestinationsList extends Component {
 
-  createTrainEstimate(trainEstimate) {
-    return <TrainEstimate
+  createTrainEstimate(trainEstimate, key) {
+    return (<TrainEstimate
+      key={key}
       estimate={trainEstimate}
       stationDistance={this.props.stationDistance}
-      transportationMode={this.props.transportationMode}></TrainEstimate>;
+      transportationMode={this.props.transportationMode}></TrainEstimate>);
   }
 
   lineColorClassForDestination(destination) {
@@ -31,8 +32,8 @@ export default class DestinationsList extends Component {
   }
 
   render() {
-    const destinationElements = (this.props.destinations || []).map(destination => {
-      return <li className="destination-entry-item">
+    const destinationElements = (this.props.destinations || []).map((destination, destinationsIndex) => {
+      return <li className="destination-entry-item" key={destinationsIndex}>
         <div className={'line-color ' + this.lineColorClassForDestination(destination)}></div>
         <div className="destination-entry-info">
           <div className="destination-long-name">
@@ -42,7 +43,7 @@ export default class DestinationsList extends Component {
             {
               destination
                 .estimate
-                .map(estimate => this.createTrainEstimate(estimate))
+                .map((estimate, estimateIndex) => this.createTrainEstimate(estimate, estimateIndex))
             }
           </div>
         </div>
