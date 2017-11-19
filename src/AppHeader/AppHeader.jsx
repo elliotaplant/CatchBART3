@@ -43,6 +43,7 @@ class AppHeader extends Component {
     return (<header className={`page-header ${this.props.loadingState}`}>
       <h1 id="main-title" style={headerStyle}>{headerText}</h1>
       {this.distanceToClosestStation()}
+      {this.props.children}
     </header>);
   }
 }

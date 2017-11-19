@@ -34,17 +34,46 @@ class App extends Component {
       transportationMode: Types.TransportationMode.WALKING
     };
 
-    this.init();
+    this.updateFullPath = this
+      .updateFullPath
+      .bind(this);
+    this.updateClosestStation = this
+      .updateClosestStation
+      .bind(this);
+    this.updateStationEstimates = this
+      .updateStationEstimates
+      .bind(this);
+    this.calculateLoadingState = this
+      .calculateLoadingState
+      .bind(this);
+    this.refreshButtons = this
+      .refreshButtons
+      .bind(this);
+
+    this.updateFullPath();
   }
 
-  init() {
-    LocationUtils
+  updateFullPath() {
+    this.setState({userLocation: null, closestStation: null, destinations: null})
+    this
+      .updateClosestStation()
+      .then(() => this.updateStationEstimates())
+  }
+
+  updateClosestStation() {
+    this.setState({userLocation: null, closestStation: null,})
+    return LocationUtils
       .getUsersCurrentLocation()
       .then(location => this.setState({userLocation: location}))
       .then(() => BartUtils.findClosestStation(this.state.userLocation))
       .then(closestStation => this.setState({closestStation}))
-      .then(() => BartUtils.getStationDestionationEstimates(this.state.closestStation.abbr))
-      .then(destinations => this.setState({destinations}))
+  }
+
+  updateStationEstimates() {
+    this.setState({destinations: null})
+    return BartUtils
+      .getStationDestionationEstimates(this.state.closestStation.abbr)
+      .then(destinations => this.setState({destinations}));
   }
 
   calculateLoadingState() {
@@ -60,10 +89,24 @@ class App extends Component {
     return Types.LoadingState.GETTING_USER_LOCATION;
   }
 
+  refreshButtons() {
+    if (this.calculateLoadingState() === Types.LoadingState.LOADED) {
+      return (
+        <div className="refresh-buttons">
+          <button className="refresh-estimates-button" onClick={this.updateStationEstimates}>Refresh Estimates</button>
+          <button className="refresh-station-button" onClick={this.updateFullPath}>Refresh Station</button>
+        </div>
+      )
+    }
+    return null;
+  }
+
   render() {
     return (
       <div className="App">
-        <AppHeader loadingState={this.calculateLoadingState()} closestStation={this.state.closestStation}></AppHeader>
+        <AppHeader loadingState={this.calculateLoadingState()} closestStation={this.state.closestStation}>
+          {this.refreshButtons()}
+        </AppHeader>
         <DestinationsList
           destinations={this.state.destinations}
           stationDistance={ObjectUtils.safeGet(() => this.state.closestStation.distance)}
