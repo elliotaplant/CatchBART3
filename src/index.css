@@ -21,7 +21,6 @@ time, mark, audio, video {
 	border: 0;
 	font-size: 100%;
 	font: inherit;
-  font-family: sans-serif;
 	vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
@@ -48,7 +47,19 @@ table {
 	border-spacing: 0;
 }
 
-/*Custom resets*/
+/* Custom resets */
+button {
+  border: 0;
+  background-color: transparent;
+  border-radius: 0;
+}
+
 button:focus {
   outline: 0;
+}
+
+/* Page preload */
+html {
+  background-color: #ededed;
+  font-family: 'Roboto', sans-serif;
 }
