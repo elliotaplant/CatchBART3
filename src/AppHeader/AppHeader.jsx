@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {MathUtils, Types,} from '../utils';
+import {MathUtils} from '../utils';
 import './AppHeader.css';
 
 class AppHeader extends Component {
