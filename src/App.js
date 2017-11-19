@@ -94,7 +94,7 @@ export default class App extends Component {
     return (
       <div className="refresh-buttons">
         <button className="refresh-estimates-button" onClick={this.updateStationEstimates}>Refresh Estimates</button>
-        <button className="refresh-station-button" onClick={this.updateFullPath}>Refresh Station</button>
+        <button className="refresh-station-button" onClick={this.updateFullPath}>Refresh Location</button>
       </div>
     )
   }

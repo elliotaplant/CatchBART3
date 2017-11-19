@@ -16,7 +16,7 @@
 
 .refresh-buttons button {
   padding: 0.5vh 1vw;
-  border: 1px solid lightgray;
+  border: 0.7vw solid lightgray;
   border-radius: 1vw;
   font-size: 3.7vw;
 }
