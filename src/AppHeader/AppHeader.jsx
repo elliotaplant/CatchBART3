@@ -3,6 +3,8 @@ import {MathUtils, Types} from '../utils';
 import './AppHeader.css';
 
 class AppHeader extends Component {
+
+  // Gets the header text fron the loading state passed to the header
   headerTextFromLoadingState() {
     if (this.props.loadingState === Types.LoadingState.LOADED) {
       return this.props.closestStation.longName;
@@ -15,6 +17,7 @@ class AppHeader extends Component {
     }
   }
 
+  // Calculates the font size based on the number of characters in the header
   headerStyleFromHeaderText(headerText) {
     const maxSize = 300; // vw
     let size = 1;
@@ -24,6 +27,7 @@ class AppHeader extends Component {
     return { 'font-size': size + 'vw' };
   }
 
+  // Displays the distance to the closes station if possible
   distanceToClosestStation() {
     if (this.props.loadingState === Types.LoadingState.LOADED) {
       return (<h2 id="disance-to-closest-station">
