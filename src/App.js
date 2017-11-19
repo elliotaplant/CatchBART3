@@ -3,7 +3,7 @@ import './App.css';
 import AppHeader from './AppHeader';
 import LoadingMessage from './LoadingMessage';
 import DestinationsList from './DestinationsList';
-import {BartUtils, LocationUtils, ObjectUtils, Types} from './utils';
+import {BartUtils, LocationUtils, ObjectUtils, Types,} from './utils';
 
 // Base class for the app - holds state for entire app
 /*
@@ -55,14 +55,14 @@ export default class App extends Component {
   }
 
   updateFullPath() {
-    this.setState({userLocation: null, closestStation: null, destinations: null})
+    this.setState({userLocation: null, closestStation: null, destinations: null,})
     this
       .updateClosestStation()
       .then(() => this.updateStationEstimates())
   }
 
   updateClosestStation() {
-    this.setState({userLocation: null, closestStation: null,})
+    this.setState({userLocation: null, closestStation: null})
     return LocationUtils
       .getUsersCurrentLocation()
       .then(location => this.setState({userLocation: location}))
@@ -91,20 +91,17 @@ export default class App extends Component {
   }
 
   refreshButtons() {
-    if (this.calculateLoadingState() === Types.LoadingState.LOADED) {
-      return (
-        <div className="refresh-buttons">
-          <button className="refresh-estimates-button" onClick={this.updateStationEstimates}>Refresh Estimates</button>
-          <button className="refresh-station-button" onClick={this.updateFullPath}>Refresh Station</button>
-        </div>
-      )
-    }
-    return null;
+    return (
+      <div className="refresh-buttons">
+        <button className="refresh-estimates-button" onClick={this.updateStationEstimates}>Refresh Estimates</button>
+        <button className="refresh-station-button" onClick={this.updateFullPath}>Refresh Station</button>
+      </div>
+    )
   }
 
   render() {
     return (
-      <div className="App">
+      <div className={`App ${this.calculateLoadingState()}`}>
         <AppHeader closestStation={this.state.closestStation}>
           {this.refreshButtons()}
         </AppHeader>

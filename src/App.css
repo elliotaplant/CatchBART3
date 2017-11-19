@@ -1,7 +1,13 @@
+/* Hides refresh buttons if state is not fully loaded */
 .refresh-buttons {
+  visibility: hidden;
   display: flex;
   justify-content: space-evenly;
   padding-top: 1vh;
+}
+
+.loaded .refresh-buttons {
+  visibility: visible;
 }
 
 .refresh-buttons button {
