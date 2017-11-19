@@ -15,6 +15,15 @@ class AppHeader extends Component {
     }
   }
 
+  headerStyleFromHeaderText(headerText) {
+    const maxSize = 300; // vw
+    let size = 1;
+    if (headerText.length) {
+      size = maxSize / (20 + headerText.length);
+    }
+    return { 'font-size': size + 'vw' };
+  }
+
   distanceToClosestStation() {
     if (this.props.loadingState === Types.LoadingState.LOADED) {
       return (<h2 id="disance-to-closest-station">
@@ -24,9 +33,13 @@ class AppHeader extends Component {
     return null;
   }
 
+
+
   render() {
-    return (<header className="page-header">
-      <h1 id="main-title">{this.headerTextFromLoadingState()}</h1>
+    const headerText = this.headerTextFromLoadingState();
+    const headerStyle = this.headerStyleFromHeaderText(headerText);
+    return (<header className={`page-header ${this.props.loadingState}`}>
+      <h1 id="main-title" style={headerStyle}>{headerText}</h1>
       {this.distanceToClosestStation()}
     </header>);
   }

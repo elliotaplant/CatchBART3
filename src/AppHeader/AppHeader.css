@@ -1,7 +1,10 @@
 .page-header {
   padding: 2vh;
-  border-bottom: 2px solid black;
   text-align: center;
+}
+
+.page-header.loaded {
+  border-bottom: 2px solid black;
 }
 
 #main-title {
