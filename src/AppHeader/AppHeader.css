@@ -7,6 +7,10 @@
   border-bottom: 2px solid darkgrey;
 }
 
-#main-title {
+.distance-to-closest-station {
+  font-size: 3vw;
+}
+
+.main-title {
   font-size: 10vw;
 }

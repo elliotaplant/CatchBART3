@@ -30,7 +30,7 @@ class AppHeader extends Component {
   // Displays the distance to the closes station if possible
   distanceToClosestStation() {
     if (this.props.loadingState === Types.LoadingState.LOADED) {
-      return (<h2 id="disance-to-closest-station">
+      return (<h2 className="distance-to-closest-station">
         {MathUtils.roundNumberTo1DecimalPlace(this.props.closestStation.distance)} miles
       </h2>)
     }
@@ -41,7 +41,7 @@ class AppHeader extends Component {
     const headerText = this.headerTextFromLoadingState();
     const headerStyle = this.headerStyleFromHeaderText(headerText);
     return (<header className={`page-header ${this.props.loadingState}`}>
-      <h1 id="main-title" style={headerStyle}>{headerText}</h1>
+      <h1 className="main-title" style={headerStyle}>{headerText}</h1>
       {this.distanceToClosestStation()}
       {this.props.children}
     </header>);
