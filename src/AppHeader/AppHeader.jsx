@@ -33,8 +33,6 @@ class AppHeader extends Component {
     return null;
   }
 
-
-
   render() {
     const headerText = this.headerTextFromLoadingState();
     const headerStyle = this.headerStyleFromHeaderText(headerText);
