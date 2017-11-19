@@ -1,9 +1,11 @@
 .refresh-buttons {
   display: flex;
   justify-content: space-evenly;
+  padding-top: 1vh;
 }
 
 .refresh-buttons button {
   padding: 0.5vh 1vw;
-  background-color: lightblue;
+  border: 1px solid lightgray;
+  border-radius: 1vw;
 }
