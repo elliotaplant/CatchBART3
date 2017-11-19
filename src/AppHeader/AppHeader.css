@@ -1,9 +1,6 @@
 .page-header {
   padding: 2vh;
   text-align: center;
-}
-
-.page-header.loaded {
   border-bottom: 2px solid darkgrey;
 }
 

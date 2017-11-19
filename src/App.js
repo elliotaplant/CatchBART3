@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import './App.css';
 import AppHeader from './AppHeader';
-import {BartUtils, LocationUtils, ObjectUtils, Types} from './utils';
+import LoadingMessage from './LoadingMessage';
 import DestinationsList from './DestinationsList';
+import {BartUtils, LocationUtils, ObjectUtils, Types} from './utils';
 
 // Base class for the app - holds state for entire app
 /*
@@ -27,7 +28,7 @@ state = {
   }
 }
 */
-class App extends Component {
+export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -104,9 +105,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <AppHeader loadingState={this.calculateLoadingState()} closestStation={this.state.closestStation}>
+        <AppHeader closestStation={this.state.closestStation}>
           {this.refreshButtons()}
         </AppHeader>
+        <LoadingMessage loadingState={this.calculateLoadingState()}></LoadingMessage>
         <DestinationsList
           destinations={this.state.destinations}
           stationDistance={ObjectUtils.safeGet(() => this.state.closestStation.distance)}
@@ -115,4 +117,3 @@ class App extends Component {
     );
   }
 }
-export default App;
