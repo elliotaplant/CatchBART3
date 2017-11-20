@@ -8,7 +8,9 @@ import './EstimateView.css';
 export default class EstimateView extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      transportationMode: Types.TransportationMode.WALKING
+    };
 
     this.updateFullPath = this
       .updateFullPath

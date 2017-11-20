@@ -1,11 +1,8 @@
 import React, {Component} from 'react';
 import './App.css';
-import AppHeader from './AppHeader';
-import LoadingMessage from './LoadingMessage';
 import EstimateView from './EstimateView';
-import DestinationsList from './DestinationsList';
 import AppFooter from './AppFooter';
-import {BartUtils, LocationUtils, ObjectUtils, Types} from './utils';
+import {Types} from './utils';
 
 // Base class for the app - holds state for entire app
 /*
@@ -34,16 +31,33 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      transportationMode: Types.TransportationMode.WALKING
-    };
+      view: Types.View.ESTIMATE
+    }
+
+    this.changeView = this.changeView.bind(this);
   }
 
+  changeView(view) {
+    this.setState({view});
+  }
+
+  switchView() {
+    if (this.state.view === Types.View.MAP) {
+      return <div>MAP</div>;
+    } else if (this.state.view === Types.View.INFO) {
+      return <div>INFO</div>;
+    } else if (this.state.view === Types.View.DONATE) {
+      return <div>DONATE</div>;
+    } else {
+      return <EstimateView></EstimateView>
+    }
+  }
 
   render() {
     return (
       <div>
-        <EstimateView></EstimateView>
-        <AppFooter></AppFooter>
+        {this.switchView()}
+        <AppFooter changeView={this.changeView}></AppFooter>
       </div>
     );
   }
