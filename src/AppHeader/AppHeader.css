@@ -1,7 +1,8 @@
 .page-header {
   padding: 2vh 2vw;
   text-align: center;
-  border-bottom: 2px solid darkgrey;
+  background-color: lightgrey;
+  border-bottom: 1px solid darkgrey;
 }
 
 .distance-to-closest-station {

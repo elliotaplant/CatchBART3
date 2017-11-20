@@ -3,13 +3,18 @@
   bottom: 0;
   left: 0;
   right: 0;
-  height: 50px;
+
   display: flex;
-  background-color: darkgrey;
   display: -webkit-flex;
   display: flex;
   -webkit-justify-content: space-around;
   justify-content: space-around;
   -webkit-align-items: center;
   align-items: center;
+
+  padding: 1vh 0;
+
+  background-color: lightgrey;
+  border-top: 1px solid darkgrey;
+  color: #333;
 }
