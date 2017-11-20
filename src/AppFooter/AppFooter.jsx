@@ -6,30 +6,28 @@ import './AppFooter.css';
 export default class AppFooter extends Component {
   constructor(props) {
     super(props);
-    this.changeToEstimate = this
-      .changeToEstimate
-      .bind(this);
-  }
-  changeToEstimate() {
-    this
-      .props
-      .changeView(Types.View.ESTIMATE);
+
+    this.viewIcons = [
+      { icon: 'list', view: Types.View.ESTIMATE},
+      { icon: 'map', view: Types.View.MAP},
+      { icon: 'info-circle', view: Types.View.INFO},
+      { icon: 'heart', view: Types.View.DONATE},
+    ].map(viewIcon => this.mapIcon(viewIcon))
   }
 
-  return (
-    <footer className="app-footer">
-      <FontAwesome onClick={this.changeToEstimate} className="estimate-icon" name="list" size="2x"></FontAwesome>
-      <FontAwesome onClick={props.changeView(Types.View.MAP)} className="map-icon" name="map" size="2x"></FontAwesome>
-      <FontAwesome
-        onClick={props.changeView(Types.View.INFO)}
-        className="info-icon"
-        name="question-circle"
-        size="2x"></FontAwesome>
-      <FontAwesome
-        onClick={props.changeView(Types.View.DONATE)}
-        className="donate-icon"
-        name="heart"
-        size="2x"></FontAwesome>
-    </footer>
-  )
+  wrappedChangeView(view) {
+    return () => this.props.changeView(view);
+  }
+
+  mapIcon({ icon, view }) {
+    return <FontAwesome onClick={this.wrappedChangeView(view)} name={icon} size="2x"></FontAwesome>
+  }
+
+  render() {
+    return (
+      <footer className="app-footer">
+        {this.viewIcons}
+      </footer>
+    );
+  }
 }
