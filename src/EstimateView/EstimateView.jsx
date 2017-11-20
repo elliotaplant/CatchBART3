@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import AppHeader from '../AppHeader';
-import LoadingMessage from '../LoadingMessage';
-import DestinationsList from '../DestinationsList';
+import AppHeader from './AppHeader';
+import LoadingMessage from './LoadingMessage';
+import DestinationsList from './DestinationsList';
 import {BartUtils, LocationUtils, ObjectUtils, Types,} from '../utils';
 import './EstimateView.css';
 

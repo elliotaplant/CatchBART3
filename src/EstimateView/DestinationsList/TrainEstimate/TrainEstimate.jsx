@@ -1,5 +1,5 @@
 import React from 'react';
-import {LocationUtils} from '../../utils';
+import {LocationUtils} from '../../../utils';
 import './TrainEstimate.css';
 
 /*

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Types} from '../utils';
+import {Types} from '../../utils';
 import './LoadingMessage.css';
 
 export default function LoadingMessage(props) {
