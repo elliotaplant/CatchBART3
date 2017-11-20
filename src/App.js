@@ -3,6 +3,7 @@ import './App.css';
 import AppHeader from './AppHeader';
 import LoadingMessage from './LoadingMessage';
 import DestinationsList from './DestinationsList';
+import AppFooter from './AppFooter';
 import {BartUtils, LocationUtils, ObjectUtils, Types} from './utils';
 
 // Base class for the app - holds state for entire app
@@ -101,7 +102,7 @@ export default class App extends Component {
 
   render() {
     return (
-      <div className={`App ${this.calculateLoadingState()}`}>
+      <div className={this.calculateLoadingState()}>
         <AppHeader closestStation={this.state.closestStation}>
           {this.refreshButtons()}
         </AppHeader>
@@ -110,6 +111,7 @@ export default class App extends Component {
           destinations={this.state.destinations}
           stationDistance={ObjectUtils.safeGet(() => this.state.closestStation.distance)}
           transportationMode={this.state.transportationMode}></DestinationsList>
+        <AppFooter></AppFooter>
       </div>
     );
   }

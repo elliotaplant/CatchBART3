@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {MathUtils} from '../utils';
 import './AppHeader.css';
 
-class AppHeader extends Component {
+export default class AppHeader extends Component {
 
   // Calculates the font size based on the number of characters in the header
   headerStyleFromHeaderText(headerText) {
@@ -41,4 +41,3 @@ class AppHeader extends Component {
     return null;
   }
 }
-export default AppHeader;
