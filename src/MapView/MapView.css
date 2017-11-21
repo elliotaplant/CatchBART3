@@ -1,0 +1,9 @@
+.bart-map-wrapper {
+  height: 95vh;
+  overflow: scroll;
+  text-align: center;
+}
+
+.bart-map-img {
+  height: 99%;
+}

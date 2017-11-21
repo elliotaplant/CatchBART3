@@ -36,6 +36,7 @@ export default class EstimateView extends Component {
     this
       .updateClosestStation()
       .then(() => this.updateStationEstimates())
+      .catch(() => this.showEstimatesError())
   }
 
   updateClosestStation() {
@@ -45,17 +46,31 @@ export default class EstimateView extends Component {
       .then(location => this.setState({userLocation: location}))
       .then(() => BartUtils.findClosestStation(this.state.userLocation))
       .then(closestStation => this.setState({closestStation}))
+      .catch(() => this.showStationLocationError())
   }
 
   updateStationEstimates() {
     this.setState({destinations: null})
     return BartUtils
       .getStationDestionationEstimates(this.state.closestStation.abbr)
-      .then(destinations => this.setState({destinations}));
+      .then(destinations => this.setState({destinations}))
+      .catch(() => this.showEstimatesError());
+  }
+
+  showStationLocationError() {
+    this.setState({ stationLocationError: true });
+  }
+
+  showEstimatesError() {
+    this.setState({ estimatesError: true });
   }
 
   calculateLoadingState() {
-    if (this.state.userLocation) {
+    if (this.state.estimatesError) {
+      return 'There was an error retrieving the station estimates from BART';
+    } else if (this.state.stationLocationError) {
+      return 'We couldn\'t find the closest BART station. Please choose one from the list below';
+    } else if (this.state.userLocation) {
       if (this.state.closestStation) {
         if (this.state.destinations) {
           return Types.LoadingState.LOADED;
