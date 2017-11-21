@@ -34,7 +34,6 @@ export default class DestinationsList extends Component {
   render() {
     const destinationElements = (this.props.destinations || []).map((destination, destinationsIndex) => {
       return <li className="destination-entry-item" key={destinationsIndex}>
-        <div className={'line-color ' + this.lineColorClassForDestination(destination)}></div>
         <div className="destination-entry-info">
           <div className="destination-long-name">
             {destination.destination}
@@ -47,6 +46,7 @@ export default class DestinationsList extends Component {
             }
           </div>
         </div>
+        <div className={'line-color ' + this.lineColorClassForDestination(destination)}></div>
       </li>;
     });
     return <ul>{destinationElements}</ul>;

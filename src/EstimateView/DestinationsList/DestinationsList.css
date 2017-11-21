@@ -1,6 +1,6 @@
 .destination-entry-item {
   display: flex;
-  border-bottom: 2px solid lightgray;
+  border-bottom: 0.2vh solid lightgray;
 }
 
 .destination-entry-info {

@@ -20,7 +20,7 @@ export default class AppHeader extends Component {
   distanceToClosestStation() {
     return (
       <h2 className="distance-to-closest-station">
-        {MathUtils.roundNumberTo1DecimalPlace(this.props.closestStation.distance)}
+        {MathUtils.roundNumberTo1DecimalPlace(this.props.closestStation.distance) + ' '}
         miles
       </h2>
     )
