@@ -1,0 +1,6 @@
+.not-donated {
+  /*color: rgb(255, 59, 48);*/
+}
+.has-donated {
+  color: rgb(76, 217, 100);
+}

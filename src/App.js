@@ -3,6 +3,7 @@ import './App.css';
 import EstimateView from './EstimateView';
 import MapView from './MapView';
 import InfoView from './InfoView';
+import DonateView from './DonateView';
 import AppFooter from './AppFooter';
 import {Types} from './utils';
 
@@ -49,7 +50,7 @@ export default class App extends Component {
     } else if (this.state.view === Types.View.INFO) {
       return <InfoView></InfoView>;
     } else if (this.state.view === Types.View.DONATE) {
-      return <div>DONATE</div>;
+      return <DonateView></DonateView>;
     } else {
       return <EstimateView></EstimateView>
     }

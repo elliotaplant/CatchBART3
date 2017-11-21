@@ -25,8 +25,14 @@ const Types = {
     INFO: 'info',
   },
 
+  Donated: {
+    NOT_DONATED: 'not-donated',
+    HAS_DONATED: 'has-donated',
+  },
+
   LocalStorageKey: {
     TRANSPORTATION: 'transportation',
+    DONATED: 'donated',
   }
 }
 
