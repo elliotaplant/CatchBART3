@@ -9,35 +9,39 @@ export default class DonateView extends Component {
 
     this.state = {};
 
-    let hasDonated = Types.Donated.NOT_DONATED;
-    this.state = {hasDonated};
+    let hasDonated = null;
 
     try {
       hasDonated = localStorage.getItem(Types.LocalStorageKey.DONATED);
     } catch (e) {
       hasDonated = Types.Donated.NOT_DONATED;
     }
-    this.setDonated(Types.Donated.NOT_DONATED);
+    this.state = {hasDonated};
   }
 
-  setDonated(donationSetting) {
-    localStorage.setItem(Types.LocalStorageKey.DONATED, donationSetting);
-    this.setState({ hasDonated: donationSetting });
+  setDonated(hasDonated) {
+    console.log('hasDonated', hasDonated);
+    localStorage.setItem(Types.LocalStorageKey.DONATED, hasDonated);
+    this.setState({hasDonated});
   }
 
   toggleDonated() {
-    const newDonated = this.state.hasDonated === Types.Donated.HAS_DONATED ?
-      Types.Donated.NOT_DONATED : Types.Donated.HAS_DONATED;
+    const newDonated = this.state.hasDonated === Types.Donated.HAS_DONATED
+      ? Types.Donated.NOT_DONATED
+      : Types.Donated.HAS_DONATED;
 
-    localStorage.setItem(Types.LocalStorageKey.DONATED, newDonated);
-    this.setState({ hasDonated: newDonated });
+    this.setDonated(newDonated);
   }
 
   donationToggle() {
-    return (<FontAwesome className={'donation-toggle ' + this.state.hasDonated}
-      name={this.state.hasDonated === Types.Donated.HAS_DONATED ? 'toggle-on' : 'toggle-off'}
-      onClick={() => this.toggleDonated()}>
-    </FontAwesome>);
+    return (
+      <FontAwesome
+        className={'donation-toggle ' + this.state.hasDonated}
+        name={this.state.hasDonated === Types.Donated.HAS_DONATED
+          ? 'toggle-on'
+          : 'toggle-off'}
+        onClick={() => this.toggleDonated()}></FontAwesome>
+    );
   }
 
   render() {
