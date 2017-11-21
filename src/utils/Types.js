@@ -8,7 +8,7 @@ const Types = {
 
   TransportationMode: {
     WALKING: 'walking',
-    RUNNING: 'running',
+    BICYCLING: 'bicycling',
     DRIVING: 'driving',
   },
 
@@ -23,6 +23,10 @@ const Types = {
     MAP: 'map',
     DONATE: 'donate',
     INFO: 'info',
+  },
+
+  LocalStorageKey: {
+    TRANSPORTATION: 'transportation',
   }
 }
 

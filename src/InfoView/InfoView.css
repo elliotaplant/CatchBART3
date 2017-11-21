@@ -1,0 +1,9 @@
+.selected {
+  color: rgb(0, 122, 255);
+}
+
+.transportation-selection-area {
+  display: flex;
+  justify-content: space-around;
+  justify-content: space-evenly;
+}

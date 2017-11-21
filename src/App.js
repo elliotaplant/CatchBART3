@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './App.css';
 import EstimateView from './EstimateView';
 import MapView from './MapView';
+import InfoView from './InfoView';
 import AppFooter from './AppFooter';
 import {Types} from './utils';
 
@@ -46,7 +47,7 @@ export default class App extends Component {
     if (this.state.view === Types.View.MAP) {
       return <MapView></MapView>;
     } else if (this.state.view === Types.View.INFO) {
-      return <div>INFO</div>;
+      return <InfoView></InfoView>;
     } else if (this.state.view === Types.View.DONATE) {
       return <div>DONATE</div>;
     } else {
