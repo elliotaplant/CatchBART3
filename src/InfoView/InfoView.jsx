@@ -11,13 +11,12 @@ export default class InfoView extends Component {
     try {
       transportationMode = localStorage.getItem(Types.LocalStorageKey.TRANSPORTATION);
       if (!transportationMode) {
-        this.selectTransportMode(Types.TransportationMode.WALKING);
-      } else {
-        this.state = {transportationMode};
+        transportationMode = Types.TransportationMode.WALKING;
       }
     } catch (e) {
       // Maybe set a cookie here?
     }
+    this.state = {transportationMode};
 
   }
   transportSelectionElement({mode, icon,}) {
@@ -55,8 +54,10 @@ export default class InfoView extends Component {
           {transportationElements}
         </div>
 
-        <p>To save this app to your homescreen, press the
-        </p>
+        <p>To save this app to your homescreen, press the box with the arrow and then press 'Save to home screen'</p>
+        <p>Made by Elliot Plant</p>
+        <a mailto="elliotaplant@gmail.com">elliotaplant@gmail.com</a>
+        <a href="https://github.com/elliotaplant/CatchBART3">github.com/elliotaplant/CatchBART3</a>
 
       </div>
     );
