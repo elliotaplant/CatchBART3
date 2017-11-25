@@ -84,8 +84,7 @@ export default class EstimateView extends Component {
   refreshButtons() {
     return (
       <div className="refresh-buttons">
-        <button className="refresh-estimates-button" onClick={this.updateStationEstimates}>Refresh Estimates</button>
-        <button className="refresh-station-button" onClick={this.updateFullPath}>Refresh Location</button>
+        <button className="refresh-station-button" onClick={this.updateFullPath}>Refresh</button>
       </div>
     )
   }
