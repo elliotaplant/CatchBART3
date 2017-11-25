@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import AppHeader from './AppHeader';
 import LoadingMessage from './LoadingMessage';
 import DestinationsList from './DestinationsList';
-import {BartUtils, LocationUtils, ObjectUtils, Types,} from '../utils';
+import {BartUtils, LocationUtils, ObjectUtils, Types} from '../utils';
 import './EstimateView.css';
 
 export default class EstimateView extends Component {
@@ -32,52 +32,51 @@ export default class EstimateView extends Component {
   }
 
   updateFullPath() {
-    this.setState({userLocation: null, closestStation: null, destinations: null})
     this
       .updateClosestStation()
       .then(() => this.updateStationEstimates())
-      .catch(() => this.showEstimatesError())
-  }
+      .catch(error => this.showEstimatesError(error))
+    }
 
   updateClosestStation() {
-    this.setState({userLocation: null, closestStation: null,})
     return LocationUtils
       .getUsersCurrentLocation()
-      .then(location => this.setState({userLocation: location}))
-      .then(() => BartUtils.findClosestStation(this.state.userLocation))
-      .then(closestStation => this.setState({closestStation}))
-      .catch(() => this.showStationLocationError())
-  }
+      .then(location => BartUtils.findClosestStation(location))
+      .then(currentStation => this.props.changeCurrentStation(currentStation))
+      .catch(error => this.showStationLocationError(error))
+    }
 
   updateStationEstimates() {
-    this.setState({destinations: null})
     return BartUtils
-      .getStationDestionationEstimates(this.state.closestStation.abbr)
-      .then(destinations => this.setState({destinations}))
-      .catch(() => this.showEstimatesError());
+      .getStationDestionationEstimates(this.props.currentStation.abbr)
+      .then(destinations => this.props.changeDestinations(destinations))
+      .catch(error => this.showEstimatesError(error));
   }
 
-  showStationLocationError() {
-    this.setState({ stationLocationError: true });
+  removeErrors() {
+    this.setState({stationLocationError: null, estimatesError: null,})
   }
 
-  showEstimatesError() {
-    this.setState({ estimatesError: true });
+  showStationLocationError(error) {
+    this.setState({stationLocationError: true});
+    console.error('Station location error', error);
+  }
+
+  showEstimatesError(error) {
+    this.setState({estimatesError: true});
+    console.error('Estimates error', error);
   }
 
   calculateLoadingState() {
-    if (this.state.estimatesError) {
-      return 'There was an error retrieving the station estimates from BART';
-    } else if (this.state.stationLocationError) {
-      return 'We couldn\'t find the closest BART station. Please choose one from the list below';
-    } else if (this.state.userLocation) {
-      if (this.state.closestStation) {
-        if (this.state.destinations) {
-          return Types.LoadingState.LOADED;
-        }
-        return Types.LoadingState.LOADING_TIME_ESTIMATES;
+    if (this.props.estimatesError) {
+      return Types.LoadingState.ESTIMATES_ERROR;
+    } else if (this.props.stationLocationError) {
+      return Types.LoadingState.STATION_LOCATION_ERROR;
+    } else if (this.props.currentStation) {
+      if (this.props.destinations) {
+        return Types.LoadingState.LOADED;
       }
-      return Types.LoadingState.FINDING_CLOSEST_STATION
+      return Types.LoadingState.LOADING_TIME_ESTIMATES;
     }
     return Types.LoadingState.GETTING_USER_LOCATION;
   }
@@ -94,13 +93,13 @@ export default class EstimateView extends Component {
   render() {
     return (
       <div className={this.calculateLoadingState()}>
-        <AppHeader closestStation={this.state.closestStation}>
+        <AppHeader currentStation={this.props.currentStation}>
           {this.refreshButtons()}
         </AppHeader>
         <LoadingMessage loadingState={this.calculateLoadingState()}></LoadingMessage>
         <DestinationsList
-          destinations={this.state.destinations}
-          stationDistance={ObjectUtils.safeGet(() => this.state.closestStation.distance)}
+          destinations={this.props.destinations}
+          stationDistance={ObjectUtils.safeGet(() => this.props.currentStation.distance)}
           transportationMode={this.state.transportationMode}></DestinationsList>
       </div>
     );

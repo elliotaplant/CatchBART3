@@ -7,52 +7,95 @@ import DonateView from './DonateView';
 import AppFooter from './AppFooter';
 import {Types} from './utils';
 
-// Base class for the app - holds state for entire app
-/*
-Location: [lat, long]
-
-Station: {
-  name: string,
-  abbr: string
-  location: Location,
-  distance: number
-}
-
-Estimate: {
-  ???
-}
-state = {
-  userLocation: Location,
-  closestStation: Station,
-  estimates: {
-    northbound: Estimate[],
-    southbound: Estimate[],
-  }
-}
-*/
 export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      view: Types.View.ESTIMATE
+      view: Types.View.ESTIMATE,
+      transportationMode: Types.TransportationMode.WALKING
     }
 
-    this.changeView = this.changeView.bind(this);
+    this.initializeLocalStorageState();
+    this.state = {
+      ...this.state,
+      ...this.loadLocalStorageState()
+    };
+
+    this.changeView = this
+      .changeView
+      .bind(this);
+    this.changeTransportationMode = this
+      .changeTransportationMode
+      .bind(this);
+    this.changeCurrentStation = this
+      .changeCurrentStation
+      .bind(this);
+    this.changeDestinations = this
+      .changeDestinations
+      .bind(this);
+  }
+
+  // Sets the initial localStorage state if it is not already set
+  initializeLocalStorageState() {
+    try {
+      if (!localStorage.getItem(Types.LocalStorageKey.TRANSPORTATION)) {
+        localStorage.setItem(Types.LocalStorageKey.TRANSPORTATION, Types.TransportationMode.WALKING);
+      }
+      if (!localStorage.getItem(Types.LocalStorageKey.DONATED)) {
+        localStorage.setItem(Types.LocalStorageKey.DONATED, Types.TransportationMode.NOT_DONATED);
+      }
+    } catch (e) {
+      // Consider using cookies
+    }
+  }
+
+  // Loads initial state of app from localStorage
+  loadLocalStorageState() {
+    try {
+      return {
+        transportationMode: localStorage.getItem(Types.LocalStorageKey.TRANSPORTATION),
+        donated: localStorage.getItem(Types.LocalStorageKey.DONATED),
+      };
+    } catch (e) {
+      return {};
+    }
   }
 
   changeView(view) {
     this.setState({view});
   }
 
+  changeTransportationMode(transportationMode) {
+    this.setState({transportationMode});
+  }
+
+  changeDonated(donated) {
+    this.setState({donated});
+  }
+
+  changeCurrentStation(currentStation) {
+    this.setState({currentStation});
+  }
+
+  changeDestinations(destinations) {
+    this.setState({destinations});
+  }
+
   switchView() {
     if (this.state.view === Types.View.MAP) {
       return <MapView></MapView>;
     } else if (this.state.view === Types.View.INFO) {
-      return <InfoView></InfoView>;
+      return <InfoView
+        changeTransportationMode={this.changeTransportationMode}
+        transportationMode={this.state.transportationMode}></InfoView>;
     } else if (this.state.view === Types.View.DONATE) {
-      return <DonateView></DonateView>;
+      return <DonateView changeDonated={this.changeDonated} donated={this.state.donated}></DonateView>;
     } else {
-      return <EstimateView></EstimateView>
+      return <EstimateView
+        changeCurrentStation={this.changeCurrentStation}
+        changeDestinations={this.changeDestinations}
+        currentStation={this.state.currentStation}
+        destinations={this.state.destinations}></EstimateView>
     }
   }
 
@@ -60,7 +103,7 @@ export default class App extends Component {
     return (
       <div>
         {this.switchView()}
-        <AppFooter changeView={this.changeView}></AppFooter>
+        <AppFooter changeView={this.changeView} donated={this.state.donated}></AppFooter>
       </div>
     );
   }

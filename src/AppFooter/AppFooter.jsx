@@ -20,7 +20,7 @@ export default class AppFooter extends Component {
   }
 
   mapIcon({ icon, view }) {
-    return <FontAwesome onClick={this.wrappedChangeView(view)} name={icon} size="2x"></FontAwesome>
+    return <FontAwesome onClick={this.wrappedChangeView(view)} name={icon} size="2x" key={icon}></FontAwesome>
   }
 
   render() {

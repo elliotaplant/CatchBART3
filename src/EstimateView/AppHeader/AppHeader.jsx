@@ -20,15 +20,15 @@ export default class AppHeader extends Component {
   distanceToClosestStation() {
     return (
       <h2 className="distance-to-closest-station">
-        {MathUtils.roundNumberTo1DecimalPlace(this.props.closestStation.distance) + ' '}
+        {MathUtils.roundNumberTo1DecimalPlace(this.props.currentStation.distance) + ' '}
         miles
       </h2>
     )
   }
 
   render() {
-    if (this.props.closestStation) {
-      const headerText = this.props.closestStation.longName;
+    if (this.props.currentStation) {
+      const headerText = this.props.currentStation.longName;
       const headerStyle = this.headerStyleFromHeaderText(headerText);
       return (
         <header className="page-header">
