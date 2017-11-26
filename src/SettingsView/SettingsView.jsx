@@ -70,7 +70,7 @@ export default class SettingsView extends Component {
         <img className="ios-add-to-homescreen" src="ios-add-to-homescreen.png" alt="ios-add-to-homescreen"/>
         button
       </p>
-    } else if (this.state.deviceType === Types.DeviceType.ANDROID || true) {
+    } else if (this.state.deviceType === Types.DeviceType.ANDROID) {
       return <p>To get quick access to this app on your Android device, you can save it to your homescreen by
         opening
         <a href={window.location.href}>
@@ -120,7 +120,7 @@ export default class SettingsView extends Component {
           <div className="credits section">
             <h2 className="section-header">Author</h2>
             <div className="author-text-line">Made by&nbsp;
-              <a href="https://www.elliotplant.com">
+              <a href="http://www.elliotplant.com">
                 Elliot Plant</a>
             </div>
             <div className="author-text-line">Let me know what you think!&nbsp;
@@ -131,6 +131,7 @@ export default class SettingsView extends Component {
               <a href="https://github.com/elliotaplant/CatchBART3">
                 GitHub</a>
             </div>
+            <div className="fake-footer"></div>
           </div>
         </div>
 

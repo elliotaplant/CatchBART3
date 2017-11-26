@@ -58,3 +58,7 @@
 .author-text-line {
   margin-bottom: 1vh;
 }
+
+.fake-footer {
+  height: 4vh;
+}
