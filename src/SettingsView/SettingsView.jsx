@@ -11,7 +11,7 @@ export default class SettingsView extends Component {
       deviceType: this.getMobileOperatingSystem()
     };
   }
-  transportSelectionElement({mode, icon,}) {
+  transportSelectionElement({mode, icon}) {
     return <FontAwesome
       className={mode === this.props.transportationMode
         ? 'selected'
@@ -60,8 +60,15 @@ export default class SettingsView extends Component {
 
   saveToHomeScreenText() {
     if (this.state.deviceType === Types.DeviceType.IOS || true) {
-      return <p>To get quick access to this app on your iOS device, you can save it to your homescreen by opening <a href={window.location.href}>{window.location.href} </a>
-        in Safari <FontAwesome className="safari-icon" name="safari"></FontAwesome>, pressing the <img className="ios-share-icon" src="ios-share-icon.png" alt="ios-share-icon"/> icon at the bottom of the page, and then pressing the <img className="ios-add-to-homescreen" src="ios-add-to-homescreen.png" alt="ios-add-to-homescreen"/> button
+      return <p>To get quick access to this app on your iOS device, you can save it to your homescreen by opening
+        <a href={window.location.href}>{window.location.href}
+        </a>
+        in Safari
+        <FontAwesome className="safari-icon" name="safari"></FontAwesome>, pressing the
+        <img className="ios-share-icon" src="ios-share-icon.png" alt="ios-share-icon"/>
+        icon at the bottom of the page, and then pressing the
+        <img className="ios-add-to-homescreen" src="ios-add-to-homescreen.png" alt="ios-add-to-homescreen"/>
+        button
 
       </p>
     }
@@ -72,13 +79,13 @@ export default class SettingsView extends Component {
     const transportationElements = [
       {
         mode: Types.TransportationMode.WALKING,
-        icon: 'blind',
+        icon: 'blind'
       }, {
         mode: Types.TransportationMode.BICYCLING,
-        icon: 'bicycle',
+        icon: 'bicycle'
       }, {
         mode: Types.TransportationMode.DRIVING,
-        icon: 'car',
+        icon: 'car'
       },
     ].map(transportationType => this.transportSelectionElement(transportationType));
 
@@ -87,20 +94,33 @@ export default class SettingsView extends Component {
         <div className="page-header">
           <h1 className="main-title">Settings</h1>
         </div>
-        <div className="transportation-mode section">
-          <h2 className="section-header">Transportation mode</h2>
-          <div className="transportation-selection-area">
-            {transportationElements}
+        <div className="scroll-area">
+
+          <div className="transportation-mode section">
+            <h2 className="section-header">Transportation mode</h2>
+            <div className="transportation-selection-area">
+              {transportationElements}
+            </div>
+          </div>
+
+          <div className="save-to-homescreen section">
+            <h2 className="section-header">Add to Home Screen</h2>
+            {this.saveToHomeScreenText()}
+          </div>
+
+          <div className="credits section">
+            <h2 className="section-header">Author</h2>
+            <div className="author-text-line">Made by
+              <a href="https://www.elliotplant.com"> Elliot Plant</a>
+            </div>
+            <div className="author-text-line">Let me know what you think!
+              <a href="mailto:elliotaplant@gmail.com?Subject=CatchBART"> elliotaplant@gmail.com</a>
+            </div>
+            <div className="author-text-line">Contribute to this project on
+              <a href="https://github.com/elliotaplant/CatchBART3"> github</a>
+            </div>
           </div>
         </div>
-
-        <div className="save-to-homescreen section">
-          <h2 className="section-header">Add to Home Screen</h2>
-          {this.saveToHomeScreenText()}
-        </div>
-        <p>Made by Elliot Plant</p>
-        <a mailto="elliotaplant@gmail.com">elliotaplant@gmail.com</a>
-        <a href="https://github.com/elliotaplant/CatchBART3">github.com/elliotaplant/CatchBART3</a>
 
       </div>
     );

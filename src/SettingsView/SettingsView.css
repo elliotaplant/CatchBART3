@@ -38,11 +38,6 @@
   border-bottom: 0.3vh solid lightgrey;
 }
 
-.save-to-homescreen {
-  padding: 1vh 4vw;
-  text-align: center;
-}
-
 .ios-share-icon {
   display: inline-block;
   height: 2em;
@@ -52,4 +47,8 @@
 .ios-add-to-homescreen {
   height: 4em;
   vertical-align: middle;
+}
+
+.author-text-line {
+  margin-bottom: 1vh;
 }
