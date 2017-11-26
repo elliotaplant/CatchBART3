@@ -3,11 +3,6 @@
 .refresh-buttons {
   visibility: hidden;
   display: -webkit-flex;
-  display: flex;
-  -webkit-justify-content: space-around;
-  justify-content: space-around;
-  -webkit-justify-content: space-evenly;
-  justify-content: space-evenly;
   padding-top: 1.5vh;
 }
 
@@ -25,4 +20,5 @@
 
 .refresh-station-button {
   cursor: pointer;
+  margin: auto;
 }
