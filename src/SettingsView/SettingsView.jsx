@@ -34,10 +34,14 @@ export default class SettingsView extends Component {
 
     return (
       <div className="settings-view">
-        <h1>Settings</h1>
-        <h2>Transportation mode</h2>
-        <div className="transportation-selection-area">
-          {transportationElements}
+        <div className="page-header">
+          <h1 className="main-title">Settings</h1>
+        </div>
+        <div className="transportation-mode">
+          <h2 className="line-item-header">Transportation mode</h2>
+          <div className="transportation-selection-area">
+            {transportationElements}
+          </div>
         </div>
 
         <p>To save this app to your homescreen, press the box with the arrow and then press 'Save to home screen'</p>

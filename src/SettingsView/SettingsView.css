@@ -9,7 +9,30 @@
 }
 
 /* HACK: turns 'blind' icon into walking person */
+
 .fa-blind {
   width: 0.52em;
   overflow: hidden;
+}
+
+.page-header {
+  padding: 2vh 2vw;
+  text-align: center;
+  background-color: lightgrey;
+  border-bottom: 1px solid darkgrey;
+}
+
+.main-title {
+  font-size: 10vw;
+}
+
+.line-item-header {
+  padding-bottom: 3vh;
+  font-size: 6vw;
+  text-align: center;
+}
+
+.transportation-mode {
+  text-align: center;
+  padding: 3vh;
 }
