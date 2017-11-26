@@ -9,12 +9,13 @@ export default class SettingsView extends Component {
       className={mode === this.props.transportationMode ? 'selected' : null}
       name={icon}
       size="3x"
-      onClick={() => this.selectTransportMode(mode)}></FontAwesome>
+      onClick={() => this.selectTransportMode(mode)}
+      key={mode}></FontAwesome>
   }
 
   selectTransportMode(mode) {
     localStorage.setItem(Types.LocalStorageKey.TRANSPORTATION, mode);
-    this.props.changeTransportationMode({ transportationMode: mode });
+    this.props.changeTransportationMode(mode);
   }
 
   render() {
