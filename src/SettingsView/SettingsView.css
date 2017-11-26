@@ -8,9 +8,6 @@
 
   -webkit-justify-content: space-around;
   justify-content: space-around;
-
-  -webkit-justify-content: space-evenly;
-  justify-content: space-evenly;
 }
 
 /* HACK: turns 'blind' icon into walking person */
