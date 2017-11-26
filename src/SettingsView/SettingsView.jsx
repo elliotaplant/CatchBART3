@@ -11,7 +11,7 @@ export default class SettingsView extends Component {
       deviceType: this.getMobileOperatingSystem()
     };
   }
-  transportSelectionElement({mode, icon}) {
+  transportSelectionElement({mode, icon,}) {
     return <FontAwesome
       className={mode === this.props.transportationMode
         ? 'selected'
@@ -61,8 +61,8 @@ export default class SettingsView extends Component {
   saveToHomeScreenText() {
     if (this.state.deviceType === Types.DeviceType.IOS || true) {
       return <p>To get quick access to this app on your iOS device, you can save it to your homescreen by opening
-        <a href={window.location.href}>{window.location.href}
-        </a>
+        <a href={window.location.href}>
+          {' ' + window.location.host + window.location.pathname + ' '}</a>
         in Safari
         <FontAwesome className="safari-icon" name="safari"></FontAwesome>, pressing the
         <img className="ios-share-icon" src="ios-share-icon.png" alt="ios-share-icon"/>
@@ -79,13 +79,13 @@ export default class SettingsView extends Component {
     const transportationElements = [
       {
         mode: Types.TransportationMode.WALKING,
-        icon: 'blind'
+        icon: 'blind',
       }, {
         mode: Types.TransportationMode.BICYCLING,
-        icon: 'bicycle'
+        icon: 'bicycle',
       }, {
         mode: Types.TransportationMode.DRIVING,
-        icon: 'car'
+        icon: 'car',
       },
     ].map(transportationType => this.transportSelectionElement(transportationType));
 
@@ -110,15 +110,17 @@ export default class SettingsView extends Component {
 
           <div className="credits section">
             <h2 className="section-header">Author</h2>
-            <div className="author-text-line">Made by
-              <a href="https://www.elliotplant.com"> Elliot Plant</a>
+            <div className="author-text-line">Made by&nbsp;
+              <a href="https://www.elliotplant.com">
+                Elliot Plant</a>
             </div>
-            <div className="author-text-line">Let me know what you think!
-              <a href="mailto:elliotaplant@gmail.com?Subject=CatchBART"> elliotaplant@gmail.com</a>
+            <div className="author-text-line">Let me know what you think!&nbsp;
+              <a href="mailto:elliotaplant@gmail.com?Subject=CatchBART">
+                elliotaplant@gmail.com</a>
             </div>
-            <div className="author-text-line">Contribute to this project on
-              <a href="https://github.com/elliotaplant/CatchBART3"> github</a>
-            </div>
+            <div className="author-text-line">Contribute to this project on&nbsp;
+              <a href="https://github.com/elliotaplant/CatchBART3">
+                GitHub</a> </div>
           </div>
         </div>
 
