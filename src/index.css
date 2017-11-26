@@ -58,6 +58,10 @@ button:focus {
   outline: 0;
 }
 
+a {
+  text-decoration: none;
+}
+
 /* Page preload */
 html {
   background-color: #ededed;

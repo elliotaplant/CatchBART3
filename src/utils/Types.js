@@ -35,7 +35,14 @@ const Types = {
   LocalStorageKey: {
     TRANSPORTATION: 'transportation',
     DONATED: 'donated',
-  }
+  },
+
+  DeviceType: {
+    WINDOWS: 'windows',
+    ANDROID: 'android',
+    IOS: 'ios',
+    UNKNOWN: 'unknown',
+  },
 }
 
 export default Types;
