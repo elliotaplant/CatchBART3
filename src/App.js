@@ -95,7 +95,8 @@ export default class App extends Component {
         changeCurrentStation={this.changeCurrentStation}
         changeDestinations={this.changeDestinations}
         currentStation={this.state.currentStation}
-        destinations={this.state.destinations}></EstimateView>
+        destinations={this.state.destinations}
+        transportationMode={this.state.transportationMode}></EstimateView>
     }
   }
 
