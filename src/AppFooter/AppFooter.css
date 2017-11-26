@@ -4,7 +4,6 @@
   left: 0;
   right: 0;
 
-  display: flex;
   display: -webkit-flex;
   display: flex;
   -webkit-justify-content: space-around;
