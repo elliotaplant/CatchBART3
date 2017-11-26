@@ -15,6 +15,12 @@
   overflow: hidden;
 }
 
+.scroll-area {
+  overflow: scroll;
+  /* HACK: matches the height - header - footer */
+  height: 84vh;
+}
+
 .page-header {
   padding: 2vh 2vw;
   text-align: center;
