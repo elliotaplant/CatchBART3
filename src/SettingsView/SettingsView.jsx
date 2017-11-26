@@ -7,8 +7,6 @@ export default class SettingsView extends Component {
   constructor(props) {
     super(props);
 
-    const mop = this.getMobileOperatingSystem();
-    console.log('mop', mop);
     this.state = {
       deviceType: this.getMobileOperatingSystem()
     };
