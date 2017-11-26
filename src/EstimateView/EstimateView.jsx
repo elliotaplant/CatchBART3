@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import AppHeader from './AppHeader';
 import LoadingMessage from './LoadingMessage';
 import DestinationsList from './DestinationsList';
-import {BartUtils, LocationUtils, ObjectUtils, Types} from '../utils';
+import {BartUtils, LocationUtils, ObjectUtils, Types,} from '../utils';
 import './EstimateView.css';
 
 export default class EstimateView extends Component {
@@ -44,14 +44,19 @@ export default class EstimateView extends Component {
     }
 
   updateStationEstimates() {
-    return BartUtils
-      .getStationDestionationEstimates(this.props.currentStation.abbr)
-      .then(destinations => this.props.changeDestinations(destinations))
-      .catch(error => this.showEstimatesError(error));
+    const abbr = this.props.currentStation
+      ? this.props.currentStation.abbr
+      : null;
+    if (abbr) {
+      return BartUtils
+        .getStationDestionationEstimates(abbr)
+        .then(destinations => this.props.changeDestinations(destinations))
+        .catch(error => this.showEstimatesError(error));
+    }
   }
 
   removeErrors() {
-    this.setState({stationLocationError: null, estimatesError: null,})
+    this.setState({stationLocationError: null, estimatesError: null})
   }
 
   showStationLocationError(error) {
