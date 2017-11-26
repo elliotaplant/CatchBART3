@@ -7,6 +7,8 @@ export default class SettingsView extends Component {
   constructor(props) {
     super(props);
 
+    const mop = this.getMobileOperatingSystem();
+    console.log('mop', mop);
     this.state = {
       deviceType: this.getMobileOperatingSystem()
     };
@@ -59,7 +61,7 @@ export default class SettingsView extends Component {
   }
 
   saveToHomeScreenText() {
-    if (this.state.deviceType === Types.DeviceType.IOS || true) {
+    if (this.state.deviceType === Types.DeviceType.IOS) {
       return <p>To get quick access to this app on your iOS device, you can save it to your homescreen by opening
         <a href={window.location.href}>
           {' ' + window.location.host + window.location.pathname + ' '}</a>
@@ -69,7 +71,16 @@ export default class SettingsView extends Component {
         icon at the bottom of the page, and then pressing the
         <img className="ios-add-to-homescreen" src="ios-add-to-homescreen.png" alt="ios-add-to-homescreen"/>
         button
-
+      </p>
+    } else if (this.state.deviceType === Types.DeviceType.ANDROID || true) {
+      return <p>To get quick access to this app on your Android device, you can save it to your homescreen by
+        opening
+        <a href={window.location.href}>
+          {' ' + window.location.host + window.location.pathname + ' '}</a>
+        in Chrome&nbsp;
+        <FontAwesome className="chrome-icon" name="chrome"></FontAwesome>, pressing the&nbsp;
+        <img className="android-menu-icon" src="android-menu-icon.png" alt="android-menu-icon"/>&nbsp;
+        icon at the top-right of the page, and then pressing "Add to Home Screen"
       </p>
     }
     return null;
@@ -120,7 +131,8 @@ export default class SettingsView extends Component {
             </div>
             <div className="author-text-line">Contribute to this project on&nbsp;
               <a href="https://github.com/elliotaplant/CatchBART3">
-                GitHub</a> </div>
+                GitHub</a>
+            </div>
           </div>
         </div>
 
