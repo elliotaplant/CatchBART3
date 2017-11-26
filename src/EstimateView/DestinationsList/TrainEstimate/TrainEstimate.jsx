@@ -19,12 +19,12 @@ props = {
 }
 */
 export default function TrainEstimate(props) {
+  const minutes = props.estimate.minutes === 'Leaving' ? '0' : props.estimate.minutes;
   const urgencyClass = 'urgency-' + LocationUtils.calculateUrgency(
-    props.estimate.minutes,
+    minutes,
     props.stationDistance,
     props.transportationMode
   );
   const classNames = ['train-estimate', urgencyClass,].join(' ');
-  const minutes = props.estimate.minutes === 'Leaving' ? '0' : props.estimate.minutes;
   return <div className={classNames}>{minutes}</div>;
 }
