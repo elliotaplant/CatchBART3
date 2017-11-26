@@ -4,24 +4,9 @@ import FontAwesome from 'react-fontawesome';
 import {Types} from '../utils';
 
 export default class SettingsView extends Component {
-  constructor(props) {
-    super(props);
-
-    let transportationMode = Types.TransportationMode.WALKING;
-    try {
-      transportationMode = localStorage.getItem(Types.LocalStorageKey.TRANSPORTATION);
-      if (!transportationMode) {
-        transportationMode = Types.TransportationMode.WALKING;
-      }
-    } catch (e) {
-      // Maybe set a cookie here?
-    }
-    this.state = {transportationMode};
-
-  }
   transportSelectionElement({mode, icon,}) {
     return <FontAwesome
-      className={mode === this.state.transportationMode && 'selected'}
+      className={mode === this.props.transportationMode ? 'selected' : null}
       name={icon}
       size="3x"
       onClick={() => this.selectTransportMode(mode)}></FontAwesome>
@@ -29,7 +14,7 @@ export default class SettingsView extends Component {
 
   selectTransportMode(mode) {
     localStorage.setItem(Types.LocalStorageKey.TRANSPORTATION, mode);
-    this.setState({ transportationMode: mode });
+    this.props.changeTransportationMode({ transportationMode: mode });
   }
 
   render() {

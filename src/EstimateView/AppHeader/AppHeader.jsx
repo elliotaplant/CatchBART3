@@ -12,7 +12,7 @@ export default class AppHeader extends Component {
       size = maxSize / (20 + headerText.length);
     }
     return {
-      'font-size': size + 'vw'
+      'fontSize': size + 'vw'
     };
   }
 

@@ -4,9 +4,6 @@ import {Types} from '../utils';
 import './AppFooter.css';
 
 export default class AppFooter extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   viewIcons() {
     return [
