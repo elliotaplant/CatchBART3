@@ -24,7 +24,7 @@ const Types = {
     ESTIMATE: 'estimate',
     MAP: 'map',
     DONATE: 'donate',
-    INFO: 'info',
+    SETTINGS: 'settings',
   },
 
   Donated: {

@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import './InfoView.css';
+import './SettingsView.css';
 import FontAwesome from 'react-fontawesome';
 import {Types} from '../utils';
 
-export default class InfoView extends Component {
+export default class SettingsView extends Component {
   constructor(props) {
     super(props);
 
@@ -47,7 +47,7 @@ export default class InfoView extends Component {
     ].map(transportationType => this.transportSelectionElement(transportationType));
 
     return (
-      <div className="info-view">
+      <div className="settings-view">
         <h1>Settings</h1>
         <h2>Transportation mode</h2>
         <div className="transportation-selection-area">

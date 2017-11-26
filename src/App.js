@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './App.css';
 import EstimateView from './EstimateView';
 import MapView from './MapView';
-import InfoView from './InfoView';
+import SettingsView from './SettingsView';
 import DonateView from './DonateView';
 import AppFooter from './AppFooter';
 import {Types} from './utils';
@@ -12,13 +12,13 @@ export default class App extends Component {
     super(props);
     this.state = {
       view: Types.View.ESTIMATE,
-      transportationMode: Types.TransportationMode.WALKING
+      transportationMode: Types.TransportationMode.WALKING,
     }
 
     this.initializeLocalStorageState();
     this.state = {
       ...this.state,
-      ...this.loadLocalStorageState()
+      ...this.loadLocalStorageState(),
     };
 
     this.changeView = this
@@ -54,7 +54,7 @@ export default class App extends Component {
     try {
       return {
         transportationMode: localStorage.getItem(Types.LocalStorageKey.TRANSPORTATION),
-        donated: localStorage.getItem(Types.LocalStorageKey.DONATED),
+        donated: localStorage.getItem(Types.LocalStorageKey.DONATED)
       };
     } catch (e) {
       return {};
@@ -84,10 +84,10 @@ export default class App extends Component {
   switchView() {
     if (this.state.view === Types.View.MAP) {
       return <MapView></MapView>;
-    } else if (this.state.view === Types.View.INFO) {
-      return <InfoView
+    } else if (this.state.view === Types.View.SETTINGS) {
+      return <SettingsView
         changeTransportationMode={this.changeTransportationMode}
-        transportationMode={this.state.transportationMode}></InfoView>;
+        transportationMode={this.state.transportationMode}></SettingsView>;
     } else if (this.state.view === Types.View.DONATE) {
       return <DonateView changeDonated={this.changeDonated} donated={this.state.donated}></DonateView>;
     } else {
@@ -103,7 +103,7 @@ export default class App extends Component {
     return (
       <div>
         {this.switchView()}
-        <AppFooter changeView={this.changeView} donated={this.state.donated}></AppFooter>
+        <AppFooter changeView={this.changeView} donated={this.state.donated} currentView={this.state.view}></AppFooter>
       </div>
     );
   }
