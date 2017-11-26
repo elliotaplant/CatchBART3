@@ -22,7 +22,7 @@ export default class SettingsView extends Component {
     const transportationElements = [
       {
         mode: Types.TransportationMode.WALKING,
-        icon: 'hand-o-right',
+        icon: 'blind',
       }, {
         mode: Types.TransportationMode.BICYCLING,
         icon: 'bicycle',

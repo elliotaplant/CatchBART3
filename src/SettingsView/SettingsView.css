@@ -7,3 +7,9 @@
   justify-content: space-around;
   justify-content: space-evenly;
 }
+
+/* HACK: turns 'blind' icon into walking person */
+.fa-blind {
+  width: 0.52em;
+  overflow: hidden;
+}
