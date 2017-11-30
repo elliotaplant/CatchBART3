@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './App.css';
+import ReactGA from 'react-ga';
 import EstimateView from './EstimateView';
 import MapView from './MapView';
 import SettingsView from './SettingsView';
@@ -13,7 +14,10 @@ export default class App extends Component {
     this.state = {
       view: Types.View.ESTIMATE,
       transportationMode: Types.TransportationMode.WALKING,
-    }
+    };
+
+    // initialize google analytics with unique tracking number
+    ReactGA.initialize('UA-110477899-1');
 
     this.initializeLocalStorageState();
     this.state = {
@@ -62,14 +66,27 @@ export default class App extends Component {
   }
 
   changeView(view) {
+    ReactGA.pageview(view);
     this.setState({view});
   }
 
   changeTransportationMode(transportationMode) {
+    ReactGA.event({
+      category: 'Settings',
+      action: 'Change Transportation Mode',
+      value: transportationMode
+    });
+
     this.setState({transportationMode});
   }
 
   changeDonated(donated) {
+    ReactGA.event({
+      category: 'Settings',
+      action: 'Change Donated',
+      value: donated
+    });
+
     this.setState({donated});
   }
 
